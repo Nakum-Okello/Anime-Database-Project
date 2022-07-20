@@ -1,0 +1,23 @@
+This is a query that shows the popularity of Paradise Kiss from the Anime database…….
+
+SELECT popularity FROM Genre
+   ...> JOIN Anime ON Anime.id = Members.anime_id
+   ...> JOIN Members ON Members.genre_id = Genre.id
+   ...> WHERE Anime.title LIKE "%Paradise Kiss%";
+
+This is a query to show the anime whose popularity in the data base  is 3331
+SELECT title FROM Anime
+   ...> JOIN Genre ON Genre.id = Members.genre_id
+   ...> JOIN Members ON Members.anime_id = Anime.id
+   ...> WHERE Genre.popularity LIKE "%3331%";
+
+This query counts the number of Anime in the  database
+SELECT COUNT (title) FROM Anime;
+
+This query diplays the anime ranks
+SELECT ranked FROM Anime;
+
+This query showing the anime with popularity 297
+SELECT title FROM Anime WHERE id IN(SELECT anime_id FROM Members WHERE genre_id IN (SELECT genre_id FROM Members WHERE genre_id IN (SELECT id FROM Genre WHERE Genre.popularity = 297)));
+
+
